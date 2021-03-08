@@ -31,7 +31,6 @@ export default function PortfolioOverviewScreen() {
 
   return (
     <View style={styles.container}>
-      {isLoading && <p>Loading</p>}
       <Text style={styles.title}>Portfolio</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
     </View>
