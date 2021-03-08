@@ -12,9 +12,9 @@ export default function PortfolioOverviewScreen() {
         const temp = await authorize({
             clientId: '165990ba815ecd8ca68a33dd3ceee1d8f3833ca45fe1f50c16fb71c54a5d411b',
             clientSecret: '07a4bb759be785bb775b06866def822ce3c6426fa4e9e9dc49e34c3d13fe99f8',
-            // redirectUrl: 'cbplus://login',
+            redirectUrl: 'cbplus://login',
             // redirectUrl: 'exp://192.168.178.21:19000/login',
-            redirectUrl: 'exp://127.0.0.1:19000/login',
+            // redirectUrl: 'exp://127.0.0.1:19000/login',
             scopes: ['wallet:accounts:read'],
             serviceConfiguration: {
                 authorizationEndpoint: 'https://www.coinbase.com/oauth/authorize',
