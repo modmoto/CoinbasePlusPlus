@@ -4,11 +4,13 @@ import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 import {useEffect, useState} from "react";
 
-class StatisticState {
+interface StatisticState {
+    items: any[]
 }
 
 export default function PortfolioOverviewScreen() {
-  const [statisticsState, setStatisticsState] = useState(new StatisticState());
+  const statisticState = { items: [] } as StatisticState;
+  const [statisticsState, setStatisticsState] = useState(statisticState);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -23,16 +25,22 @@ export default function PortfolioOverviewScreen() {
     )
         .then(res => res.json())
         .then(response => {
-          setStatisticsState(response.items);
+          setStatisticsState(response);
           setIsLoading(false);
         })
         .catch(error => console.log(error));
   }, [statisticsState]);
 
+  const body = isLoading
+      ? <Text>Loading...</Text>
+      : <>
+          <Text style={styles.title}>Portfolio</Text>
+          <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      </>;
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Portfolio</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      {body}
     </View>
   );
 }
